@@ -1,0 +1,296 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbTamModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Groupe">
+    <Key>
+      <PropertyRef Name="GroupeId" />
+    </Key>
+    <Property Name="GroupeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GroupeTypeId" Type="Int32" Nullable="false" />
+    <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="GroupeType" Relationship="Self.FK_Groupe_GroupeType" FromRole="Groupe" ToRole="GroupeType" />
+    <NavigationProperty Name="Students" Relationship="Self.FK_Student_Groupe" FromRole="Groupe" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="GroupeType">
+    <Key>
+      <PropertyRef Name="GroupeTypeId" />
+    </Key>
+    <Property Name="GroupeTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ShortName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Groupes" Relationship="Self.FK_Groupe_GroupeType" FromRole="GroupeType" ToRole="Groupe" />
+  </EntityType>
+  <EntityType Name="Note">
+    <Key>
+      <PropertyRef Name="NoteId" />
+    </Key>
+    <Property Name="NoteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProfessorId" Type="Int32" />
+    <Property Name="SubjectId" Type="Int32" />
+    <Property Name="Grade" Type="Int16" />
+    <Property Name="ExamDate" Type="DateTime" Precision="0" />
+    <Property Name="StudentId" Type="Int32" />
+    <NavigationProperty Name="Professor" Relationship="Self.FK_Note_Professor" FromRole="Note" ToRole="Professor" />
+    <NavigationProperty Name="Student" Relationship="Self.FK_Note_Student" FromRole="Note" ToRole="Student" />
+    <NavigationProperty Name="Subject" Relationship="Self.FK_Note_Subject" FromRole="Note" ToRole="Subject" />
+  </EntityType>
+  <EntityType Name="Professor">
+    <Key>
+      <PropertyRef Name="ProfessorId" />
+    </Key>
+    <Property Name="ProfessorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Cnp" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Telephone" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Notes" Relationship="Self.FK_Note_Professor" FromRole="Professor" ToRole="Note" />
+    <NavigationProperty Name="SubjectProfessors" Relationship="Self.FK_SubjectProfessor_Professor" FromRole="Professor" ToRole="SubjectProfessor" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="StudentId" />
+    </Key>
+    <Property Name="StudentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GroupeId" Type="Int32" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Cnp" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Groupe" Relationship="Self.FK_Student_Groupe" FromRole="Student" ToRole="Groupe" />
+    <NavigationProperty Name="Notes" Relationship="Self.FK_Note_Student" FromRole="Student" ToRole="Note" />
+  </EntityType>
+  <EntityType Name="Subject">
+    <Key>
+      <PropertyRef Name="SubjectId" />
+    </Key>
+    <Property Name="SubjectId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SubjectTypeId" Type="Int32" Nullable="false" />
+    <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="ShortName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Notes" Relationship="Self.FK_Note_Subject" FromRole="Subject" ToRole="Note" />
+    <NavigationProperty Name="SubjectType" Relationship="Self.FK_Subject_SubjectType1" FromRole="Subject" ToRole="SubjectType" />
+    <NavigationProperty Name="SubjectProfessors" Relationship="Self.FK_SubjectProfessor_Subject" FromRole="Subject" ToRole="SubjectProfessor" />
+  </EntityType>
+  <EntityType Name="SubjectProfessor">
+    <Key>
+      <PropertyRef Name="ProfessorSubjectid" />
+    </Key>
+    <Property Name="ProfessorSubjectid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Subjectid" Type="Int32" Nullable="false" />
+    <Property Name="Professorid" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Professor" Relationship="Self.FK_SubjectProfessor_Professor" FromRole="SubjectProfessor" ToRole="Professor" />
+    <NavigationProperty Name="Subject" Relationship="Self.FK_SubjectProfessor_Subject" FromRole="SubjectProfessor" ToRole="Subject" />
+  </EntityType>
+  <EntityType Name="SubjectType">
+    <Key>
+      <PropertyRef Name="SubjectTypeId" />
+    </Key>
+    <Property Name="SubjectTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Subjects" Relationship="Self.FK_Subject_SubjectType1" FromRole="SubjectType" ToRole="Subject" />
+  </EntityType>
+  <Association Name="FK_Groupe_GroupeType">
+    <End Role="GroupeType" Type="Self.GroupeType" Multiplicity="1" />
+    <End Role="Groupe" Type="Self.Groupe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GroupeType">
+        <PropertyRef Name="GroupeTypeId" />
+      </Principal>
+      <Dependent Role="Groupe">
+        <PropertyRef Name="GroupeTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_Groupe">
+    <End Role="Groupe" Type="Self.Groupe" Multiplicity="1" />
+    <End Role="Student" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Groupe">
+        <PropertyRef Name="GroupeId" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="GroupeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Note_Professor">
+    <End Role="Professor" Type="Self.Professor" Multiplicity="0..1" />
+    <End Role="Note" Type="Self.Note" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Professor">
+        <PropertyRef Name="ProfessorId" />
+      </Principal>
+      <Dependent Role="Note">
+        <PropertyRef Name="ProfessorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Note_Student">
+    <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+    <End Role="Note" Type="Self.Note" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentId" />
+      </Principal>
+      <Dependent Role="Note">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Note_Subject">
+    <End Role="Subject" Type="Self.Subject" Multiplicity="0..1" />
+    <End Role="Note" Type="Self.Note" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subject">
+        <PropertyRef Name="SubjectId" />
+      </Principal>
+      <Dependent Role="Note">
+        <PropertyRef Name="SubjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SubjectProfessor_Professor">
+    <End Role="Professor" Type="Self.Professor" Multiplicity="1" />
+    <End Role="SubjectProfessor" Type="Self.SubjectProfessor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Professor">
+        <PropertyRef Name="ProfessorId" />
+      </Principal>
+      <Dependent Role="SubjectProfessor">
+        <PropertyRef Name="Professorid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Subject_SubjectType1">
+    <End Role="SubjectType" Type="Self.SubjectType" Multiplicity="1" />
+    <End Role="Subject" Type="Self.Subject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubjectType">
+        <PropertyRef Name="SubjectTypeId" />
+      </Principal>
+      <Dependent Role="Subject">
+        <PropertyRef Name="SubjectTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SubjectProfessor_Subject">
+    <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
+    <End Role="SubjectProfessor" Type="Self.SubjectProfessor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subject">
+        <PropertyRef Name="SubjectId" />
+      </Principal>
+      <Dependent Role="SubjectProfessor">
+        <PropertyRef Name="Subjectid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dbTamEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Groupes" EntityType="Self.Groupe" />
+    <EntitySet Name="GroupeTypes" EntityType="Self.GroupeType" />
+    <EntitySet Name="Notes" EntityType="Self.Note" />
+    <EntitySet Name="Professors" EntityType="Self.Professor" />
+    <EntitySet Name="Students" EntityType="Self.Student" />
+    <EntitySet Name="Subjects" EntityType="Self.Subject" />
+    <EntitySet Name="SubjectProfessors" EntityType="Self.SubjectProfessor" />
+    <EntitySet Name="SubjectTypes" EntityType="Self.SubjectType" />
+    <AssociationSet Name="FK_Groupe_GroupeType" Association="Self.FK_Groupe_GroupeType">
+      <End Role="GroupeType" EntitySet="GroupeTypes" />
+      <End Role="Groupe" EntitySet="Groupes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_Groupe" Association="Self.FK_Student_Groupe">
+      <End Role="Groupe" EntitySet="Groupes" />
+      <End Role="Student" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Note_Professor" Association="Self.FK_Note_Professor">
+      <End Role="Professor" EntitySet="Professors" />
+      <End Role="Note" EntitySet="Notes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Note_Student" Association="Self.FK_Note_Student">
+      <End Role="Student" EntitySet="Students" />
+      <End Role="Note" EntitySet="Notes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Note_Subject" Association="Self.FK_Note_Subject">
+      <End Role="Subject" EntitySet="Subjects" />
+      <End Role="Note" EntitySet="Notes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SubjectProfessor_Professor" Association="Self.FK_SubjectProfessor_Professor">
+      <End Role="Professor" EntitySet="Professors" />
+      <End Role="SubjectProfessor" EntitySet="SubjectProfessors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Subject_SubjectType1" Association="Self.FK_Subject_SubjectType1">
+      <End Role="SubjectType" EntitySet="SubjectTypes" />
+      <End Role="Subject" EntitySet="Subjects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SubjectProfessor_Subject" Association="Self.FK_SubjectProfessor_Subject">
+      <End Role="Subject" EntitySet="Subjects" />
+      <End Role="SubjectProfessor" EntitySet="SubjectProfessors" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(dbTamModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(dbTamModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="spStudentSelect" ReturnType="Collection(dbTamModel.spStudentSelect_Result)">
+      <Parameter Name="StudentId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spStudentUpdate">
+      <Parameter Name="StudentId" Mode="In" Type="Int32" />
+      <Parameter Name="GroupeId" Mode="In" Type="Int32" />
+      <Parameter Name="FirstName" Mode="In" Type="String" />
+      <Parameter Name="LastName" Mode="In" Type="String" />
+      <Parameter Name="Cnp" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="Active" Mode="In" Type="Boolean" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="spStudentSelect_Result">
+    <Property Type="Int32" Name="StudentId" Nullable="false" />
+    <Property Type="Int32" Name="GroupeId" Nullable="false" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Cnp" Nullable="false" MaxLength="13" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="255" />
+  </ComplexType>
+</Schema>

@@ -57,12 +57,10 @@
         <Label Grid.Row="0"  Content ="Aplicatie&#xa; Studenti" HorizontalContentAlignment="Center" 
             VerticalContentAlignment="Center" VerticalAlignment="Top" FontSize="60" Height="210" Grid.RowSpan="3" FontFamily="Sitka Display" Margin="10,10,1.667,0" Grid.ColumnSpan="6" FontWeight="Bold"/>
         <StackPanel Grid.Row="2" Orientation="Vertical" Grid.ColumnSpan="6" Margin="0,0.333,0.667,0">
-            <Button Content="Adauga" Height="35" Margin="322,60,314,0"
+            <Button Content="Adauga studenti" Height="35" Margin="322,60,314,0"
                     FontSize="20" Style="{StaticResource RoundedButtonStyle}" Command="{Binding AddCommand}" FontFamily="Segoe UI Emoji"/>
-            <Button Content="Sterge" Height="35" Margin="322,30,314,0"
+            <Button Content="Vezi studentii" Height="35" Margin="322,30,314,0"
                     FontSize="20" Style="{StaticResource RoundedButtonStyle}" FontFamily="Segoe UI Emoji"/>
-            <Button Content="Vizualizeaza" Height="50" Margin="322,30,314,0"
-                    FontSize="20" Style="{StaticResource RoundedButtonStyle}" FontFamily="Segoe UI Emoji"  />
         </StackPanel>
     </Grid>
 </Window>
