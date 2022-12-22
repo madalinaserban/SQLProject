@@ -1,0 +1,68 @@
+﻿<Window x:Name="frMain" x:Class="SQLProject.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:ctx="clr-namespace:SQLProject.ViewModel"
+        mc:Ignorable="d"
+        Title="Student App" Height="550" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" >
+    <Window.DataContext>
+        <ctx:MainWindowViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <Style x:Key="RoundedBorder" TargetType="Border">
+            <Setter Property="CornerRadius" Value="5"/>
+        </Style>
+        <Style x:Key="RoundedButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="10,10,10,10" Background="{TemplateBinding Background}" Style="{StaticResource RoundedBorder}">
+                            <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding  Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"  Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding  VerticalContentAlignment}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="LightBlue"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="LightBlue"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Window.Background>
+        <ImageBrush ImageSource="/Resource/Images/background.jpg"/>
+    </Window.Background>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="139*"/>
+            <RowDefinition Height="168*"/>
+            <RowDefinition Height="512*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="11*"/>
+            <ColumnDefinition Width="24*"/>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="15*"/>
+            <ColumnDefinition Width="45*"/>
+            <ColumnDefinition Width="380*"/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0"  Content ="Aplicatie&#xa; Studenti" HorizontalContentAlignment="Center" 
+            VerticalContentAlignment="Center" VerticalAlignment="Top" FontSize="60" Height="210" Grid.RowSpan="3" FontFamily="Sitka Display" Margin="10,10,1.667,0" Grid.ColumnSpan="6" FontWeight="Bold"/>
+        <StackPanel Grid.Row="2" Orientation="Vertical" Grid.ColumnSpan="6" Margin="0,0.333,0.667,0">
+            <Button Content="Adauga" Height="35" Margin="322,60,314,0"
+                    FontSize="20" Style="{StaticResource RoundedButtonStyle}" Command="{Binding AddCommand}" FontFamily="Segoe UI Emoji"/>
+            <Button Content="Sterge" Height="35" Margin="322,30,314,0"
+                    FontSize="20" Style="{StaticResource RoundedButtonStyle}" FontFamily="Segoe UI Emoji"/>
+            <Button Content="Vizualizeaza" Height="50" Margin="322,30,314,0"
+                    FontSize="20" Style="{StaticResource RoundedButtonStyle}" FontFamily="Segoe UI Emoji"  />
+        </StackPanel>
+    </Grid>
+</Window>

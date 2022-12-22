@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7811233eb32f43b88dbbcea9d9bd87dd" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="dbTamModel.Groupe" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbTamModel.GroupeType" Width="1.5" PointX="1.5" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbTamModel.Note" Width="1.5" PointX="5.25" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbTamModel.Professor" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbTamModel.Student" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbTamModel.Subject" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbTamModel.SubjectProfessor" Width="1.5" PointX="8.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbTamModel.SubjectType" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <AssociationConnector Association="dbTamModel.FK_Groupe_GroupeType" ManuallyRouted="false" />
+        <AssociationConnector Association="dbTamModel.FK_Student_Groupe" ManuallyRouted="false" />
+        <AssociationConnector Association="dbTamModel.FK_Note_Professor" ManuallyRouted="false" />
+        <AssociationConnector Association="dbTamModel.FK_Note_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="dbTamModel.FK_Note_Subject" ManuallyRouted="false" />
+        <AssociationConnector Association="dbTamModel.FK_SubjectProfessor_Professor" ManuallyRouted="false" />
+        <AssociationConnector Association="dbTamModel.FK_Subject_SubjectType1" ManuallyRouted="false" />
+        <AssociationConnector Association="dbTamModel.FK_SubjectProfessor_Subject" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
