@@ -130,7 +130,7 @@
             </ListView.ItemTemplate>
         </ListView>
         <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="0,321.667,0.333,-0.334" Grid.RowSpan="2">
-            <Button Content="Adauga un student nou" Style="{StaticResource RoundedButtonStyle}" FontFamily="Sitka Display" Margin="220,5,0,5.333" Width="270" FontSize="20" Command="{Binding AddStudentsCommand}" Click="Button_Click_1"/>
+            <Button Content="Adauga un student nou" Style="{StaticResource RoundedButtonStyle}" FontFamily="Sitka Display" Margin="220,5,0,5.333" Width="270" FontSize="20" Command="{Binding AddStudentsCommand}"/>
             <Button Content="Modifica" Style="{StaticResource RoundedButtonStyle}" FontFamily="Sitka Display" Margin="20,5,0,5.333" Width="175" FontSize="20" Command="{Binding ModificaStudentCommand}" />
             <Button Content="Sterge" Style="{StaticResource RoundedButtonStyle}" FontFamily="Sitka Display" Margin="20,5,0,5.333" Width="169" FontSize="20" Command="{Binding StergeStudentCommand}"/>
         </StackPanel>
@@ -138,7 +138,6 @@
                 Style="{StaticResource RoundedButtonStyle}" FontSize="20" Command="{Binding BackCommand}">
             <TextBlock Text="Back" FontSize="25" FontFamily="Sitka Display" Width="50" Height="28"/>
         </Button>
-        <Button Content="Vezi profesori" HorizontalAlignment="Left" Margin="70,22,0,0" VerticalAlignment="Top" Width="185" Click="Button_Click" />
     </Grid>
 </Window>
 

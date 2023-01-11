@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace SQLProject.ViewModel
@@ -94,7 +95,7 @@ namespace SQLProject.ViewModel
         private void StergeStudentMethod(object param)
         {
             schooldb.DELETESTUDENT(selectedStudent.Id);
-            MessageBox.Show("Ai sters studentul :" + SelectedStudent.Nume +" "+ SelectedStudent.Prenume);
+            MessageBox.Show("Ai sters studentul :" + SelectedStudent.Nume + " " + SelectedStudent.Prenume);
             SeeStudentsView Window = new SeeStudentsView();
             App.Current.MainWindow.Close();
             App.Current.MainWindow = Window;
@@ -138,6 +139,22 @@ namespace SQLProject.ViewModel
             App.Current.MainWindow.Close();
             App.Current.MainWindow = addView;
             addView.Show();
+        }
+        private ICommand searchCommand;
+        private ICommand SearchCommand
+        {
+            get
+            {
+                if (backCommand == null)
+                {
+                    backCommand = new RelayCommands(SearchMethod);
+                }
+                return backCommand;
+            }
+        }
+        private void SearchMethod(object param)
+        {
+           
         }
     }
 }
