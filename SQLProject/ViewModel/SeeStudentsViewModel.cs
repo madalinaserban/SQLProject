@@ -45,6 +45,7 @@ namespace SQLProject.ViewModel
                 if (selectedStudent != null)
                 {
                     CanExecuteDeleteCommand = true;
+                    CanExecuteModifyCommand = true;
                     choosedStudent = selectedStudent;
                 }
                 OnPropertyChanged("SelectedStudent");
@@ -52,12 +53,28 @@ namespace SQLProject.ViewModel
         }
 
         public bool CanExecuteDeleteCommand { get; set; }
+        public bool CanExecuteModifyCommand { get; set; }
 
         public SeeStudentsViewModel()
         {
             StudentsCollection = new ObservableCollection<StudentMenu>(logicStudent.GetStudentsMenu());
         }
 
+        private ICommand modificaStudentCommand;
+        public ICommand ModificaStudentCommand
+        {
+            get
+            {
+                if (modificaStudentCommand == null)
+                {
+                    modificaStudentCommand = new RelayCommands(ModificaStudentMethod, param => CanExecuteModifyCommand);
+                }
+                return modificaStudentCommand;
+            }
+        }
+        private void ModificaStudentMethod(object param)
+        { 
+        }
         private ICommand stergeStudentCommand;
         public ICommand StergeStudentCommand
         {
