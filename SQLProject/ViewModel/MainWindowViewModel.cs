@@ -11,62 +11,24 @@ namespace SQLProject.ViewModel
 {
     class MainWindowViewModel : BaseViewModel
     {
-            private ICommand addCommand;
-            public ICommand AddCommand
+        private ICommand seeCommand;
+        public ICommand SeeCommand
+        {
+            get
             {
-                get
-                {
-                        addCommand = new RelayCommands(AddMethod);
-                    
-                    return addCommand;
-                }
-            }
-            private void AddMethod(object param)
-            {
-                AddView addView = new AddView();
-                App.Current.MainWindow.Close();
-                App.Current.MainWindow = addView;
-                addView.Show();
-            }
+                seeCommand = new RelayCommands(SeeMethod);
 
-            //private ICommand signUpCommand;
-            //public ICommand SignUpCommand
-            //{
-            //    get
-            //    {
-            //        if (signUpCommand == null)
-            //        {
-            //            signUpCommand = new RelayCommands(SignUpMethod);
-            //        }
-            //        return signUpCommand;
-            //    }
-            //}
-            //private void SignUpMethod(object param)
-            //{
-            //    DeleteView deleteView = new DeleteView();
-            //    App.Current.MainWindow.Close();
-            //    App.Current.MainWindow = signUpView;
-            //    signUpView.Show();
-            //}
-
-            //private ICommand withoutAccountCommand;
-            //public ICommand WithoutAccountCommand
-            //{
-            //    get
-            //    {
-            //        if (withoutAccountCommand == null)
-            //        {
-            //            withoutAccountCommand = new RelayCommands(WithoutAccountMethod);
-            //        }
-            //        return withoutAccountCommand;
-            //    }
-            //}
-            //private void WithoutAccountMethod(object param)
-            //{
-            //    NotLoggedView customerView = new NotLoggedView();
-            //    App.Current.MainWindow.Close();
-            //    App.Current.MainWindow = customerView;
-            //    customerView.Show();
-            //}
+                return seeCommand;
+            }
         }
+        private void SeeMethod(object param)
+        {
+            SeeStudentsView seeView = new SeeStudentsView();
+            App.Current.MainWindow.Close();
+            App.Current.MainWindow = seeView;
+            seeView.Show();
+
+        }
+
     }
+}

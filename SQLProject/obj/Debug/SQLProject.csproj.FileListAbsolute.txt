@@ -22,3 +22,7 @@ C:\Anul3\Semestrul1\SQL\SQLProject\SQLProject\bin\Debug\EntityFramework.xml
 C:\Anul3\Semestrul1\SQL\SQLProject\SQLProject\bin\Debug\EntityFramework.SqlServer.xml
 C:\Anul3\Semestrul1\SQL\SQLProject\SQLProject\obj\Debug\SQLProject_Content.g.cs
 C:\Anul3\Semestrul1\SQL\SQLProject\SQLProject\obj\Debug\SQLProject.csproj.CopyComplete
+C:\Anul3\Semestrul1\SQL\SQLProject\SQLProject\bin\Debug\Model\Database1.mdf
+C:\Anul3\Semestrul1\SQL\SQLProject\SQLProject\bin\Debug\Model\Database1_log.ldf
+C:\Anul3\Semestrul1\SQL\SQLProject\SQLProject\obj\Debug\View\SeeStudentsView.g.cs
+C:\Anul3\Semestrul1\SQL\SQLProject\SQLProject\obj\Debug\View\SeeStudentsView.baml
