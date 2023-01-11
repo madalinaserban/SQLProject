@@ -35,7 +35,6 @@ namespace SQLProject.Model
         public virtual DbSet<Subject> Subjects { get; set; }
         public virtual DbSet<SubjectProfessor> SubjectProfessors { get; set; }
         public virtual DbSet<SubjectType> SubjectTypes { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

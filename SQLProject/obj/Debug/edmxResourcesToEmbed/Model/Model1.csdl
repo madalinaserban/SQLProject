@@ -94,16 +94,6 @@
     <Property Name="Active" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="Subjects" Relationship="Self.FK_Subject_SubjectType1" FromRole="SubjectType" ToRole="Subject" />
   </EntityType>
-  <EntityType Name="sysdiagram">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-  </EntityType>
   <Association Name="FK_Groupe_GroupeType">
     <End Role="GroupeType" Type="Self.GroupeType" Multiplicity="1" />
     <End Role="Groupe" Type="Self.Groupe" Multiplicity="*" />
@@ -209,7 +199,6 @@
     <EntitySet Name="Subjects" EntityType="Self.Subject" />
     <EntitySet Name="SubjectProfessors" EntityType="Self.SubjectProfessor" />
     <EntitySet Name="SubjectTypes" EntityType="Self.SubjectType" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <AssociationSet Name="FK_Groupe_GroupeType" Association="Self.FK_Groupe_GroupeType">
       <End Role="GroupeType" EntitySet="GroupeTypes" />
       <End Role="Groupe" EntitySet="Groupes" />

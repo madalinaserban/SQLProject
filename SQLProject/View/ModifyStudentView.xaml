@@ -1,0 +1,165 @@
+﻿<Window x:Class="SQLProject.View.ModifyStudentView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ctx="clr-namespace:SQLProject.ViewModel"
+        mc:Ignorable="d"
+        Title="Student App" Height="550" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Window.DataContext>
+        <ctx:ModifyStudentViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <Style x:Key="RoundedBorder" TargetType="Border">
+            <Setter Property="CornerRadius" Value="5"/>
+        </Style>
+        <Style x:Key="RoundedButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="10,10,10,10" Background="{TemplateBinding Background}" Style="{StaticResource RoundedBorder}">
+                            <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding  Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"  Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding  VerticalContentAlignment}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="LightBlue"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="LightBlue"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="RoundedTextBoxStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="500"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontFamily" Value="Sitka Display"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="5"/>
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="True">
+                    <Setter Property="Background" Value="White"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type TextBox}">
+                                <Border CornerRadius="10,10,10,10" Background="{TemplateBinding Background}" Style="{StaticResource RoundedBorder}">
+                                    <ScrollViewer x:Name="PART_ContentHost"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="Background" Value="LightBlue"/>
+                    <Setter Property="Text" Value=""/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type TextBox}">
+                                <Border Background="{TemplateBinding Background}" Style="{StaticResource RoundedBorder}">
+                                    <ScrollViewer x:Name="PART_ContentHost"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="RoundedPasswordBoxStyle" TargetType="{x:Type PasswordBox}">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="500"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontFamily" Value="Sitka Display"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="5"/>
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="True">
+                    <Setter Property="Background" Value="White"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type PasswordBox}">
+                                <Border CornerRadius="10,10,10,10" Background="{TemplateBinding Background}" Style="{StaticResource RoundedBorder}">
+                                    <ScrollViewer x:Name="PART_ContentHost"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="Background" Value="LightBlue"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type PasswordBox}">
+                                <Border Background="{TemplateBinding Background}" Style="{StaticResource RoundedBorder}">
+                                    <ScrollViewer x:Name="PART_ContentHost"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Window.Background>
+        <ImageBrush ImageSource="/Resource/Images/background.jpg"/>
+    </Window.Background>
+    <Grid>
+        <Grid.Background>
+            <ImageBrush/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="47*"/>
+            <RowDefinition Height="38*"/>
+            <RowDefinition Height="65*"/>
+            <RowDefinition Height="59*"/>
+            <RowDefinition Height="60*"/>
+            <RowDefinition Height="60*"/>
+            <RowDefinition Height="55*"/>
+            <RowDefinition Height="65*"/>
+            <RowDefinition Height="99*"/>
+            <RowDefinition Height="41*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="187*"/>
+            <ColumnDefinition Width="281*"/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.ColumnSpan="2" Content="Modifica Student" HorizontalContentAlignment="Center"
+               VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center"
+               FontSize="60" FontFamily="Sitka Display"  Height="117" Width="438" Margin="0.333,-4,30.333,2.333" Grid.Column="1" Grid.RowSpan="3"/>
+        <Label Grid.Row="3" Grid.Column="1" Content="Nume" VerticalAlignment="Center" HorizontalAlignment="Center"
+               FontSize="25" FontFamily="Sitka Display" Height="52" Width="115" HorizontalContentAlignment="Center" Margin="88.333,7.333,98,45.333" Grid.RowSpan="2"/>
+        <Label Grid.Row="4" Grid.Column="1" Content="Prenume" FontSize="25" FontFamily="Sitka Display" HorizontalAlignment="Center"
+               VerticalAlignment="Top" Height="41" Width="115" HorizontalContentAlignment="Center" Margin="88.333,4.667,98,0"/>
+        <Label Grid.Row="5" Grid.Column="1" Content="Grupa" FontSize="25" FontFamily="Sitka Display" HorizontalAlignment="Center"
+               VerticalAlignment="Center" Height="46" HorizontalContentAlignment="Center" Width="130" Margin="73.333,4.667,98,0"/>
+        <Label Grid.Row="6" Grid.Column="1" Content="Email" FontSize="25" FontFamily="Sitka Display" HorizontalAlignment="Center"
+               VerticalAlignment="Bottom" Height="46" HorizontalContentAlignment="Center" Width="130" Margin="73.333,0,98,46.333" Grid.RowSpan="2"/>
+        <TextBox Grid.Row="3" Grid.Column="2" Margin="0,7.333,29.667,0.333" Style="{StaticResource RoundedTextBoxStyle}" Text="{Binding NumeProperty}"/>
+        <TextBox Grid.Row="4" Grid.Column="2" Margin="0,4.667,29.667,0.333" Style="{StaticResource RoundedTextBoxStyle}" Text="{Binding PrenumeProperty}"/>
+        <TextBox Grid.Row="5" Grid.Column="2" Margin="0,4.667,29.667,0" Style="{StaticResource RoundedTextBoxStyle}" Text="{Binding IdGrupaProperty}"/>
+        <TextBox Grid.Row="6" Grid.Column="2" Margin="0,5,29.667,46.333" Style="{StaticResource RoundedTextBoxStyle}" Text="{Binding EmailProperty}" Grid.RowSpan="2"/>
+        <Label Grid.Row="7" Grid.Column="1" Content="Cnp" FontSize="25" FontFamily="Sitka Display" HorizontalAlignment="Center"
+               VerticalAlignment="Center" Height="45" HorizontalContentAlignment="Center" Width="130" Margin="16.333,9.667,41,0.667"/>
+        <Button Grid.ColumnSpan="2" Grid.Row="9" Style="{StaticResource RoundedButtonStyle}" Content="Modifica"
+                FontFamily="Sitka Display" FontSize="25" Margin="105.333,34,138.333,27.667" Command="{Binding UpdateStudentCommand}" Grid.Column="1" Grid.RowSpan="2" Tag="Email"/>
+        <TextBox Grid.Row="7" Grid.Column="2" Margin="0,5.333,29.667,51" Style="{StaticResource RoundedTextBoxStyle}" Text="{Binding CnpProperty}" Grid.RowSpan="2"/>
+        <Button Grid.Column="0" Grid.Row="10" Width="80" HorizontalAlignment="Left" Margin="10,0.667,0,4.667"
+                Style="{StaticResource RoundedButtonStyle}" FontSize="20" Command="{Binding BackCommand}" Grid.ColumnSpan="2">
+            <TextBlock Text="Back" FontSize="25" FontFamily="Sitka Display"/>
+        </Button>
+    </Grid>
+</Window>

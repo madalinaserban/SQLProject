@@ -78,16 +78,6 @@
     <Property Name="FullName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Active" Type="bit" Nullable="false" />
   </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
-  </EntityType>
   <Association Name="FK_Groupe_GroupeType">
     <End Role="GroupeType" Type="Self.GroupeType" Multiplicity="1" />
     <End Role="Groupe" Type="Self.Groupe" Multiplicity="*" />
@@ -250,7 +240,6 @@
     <EntitySet Name="Subject" EntityType="Self.Subject" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SubjectProfessor" EntityType="Self.SubjectProfessor" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SubjectType" EntityType="Self.SubjectType" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Groupe_GroupeType" Association="Self.FK_Groupe_GroupeType">
       <End Role="GroupeType" EntitySet="GroupeType" />
       <End Role="Groupe" EntitySet="Groupe" />

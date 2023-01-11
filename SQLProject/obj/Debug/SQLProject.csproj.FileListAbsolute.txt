@@ -26,3 +26,5 @@ C:\Anul3\Semestrul1\SQL\SQLProject\SQLProject\bin\Debug\Model\Database1.mdf
 C:\Anul3\Semestrul1\SQL\SQLProject\SQLProject\bin\Debug\Model\Database1_log.ldf
 C:\Anul3\Semestrul1\SQL\SQLProject\SQLProject\obj\Debug\View\SeeStudentsView.g.cs
 C:\Anul3\Semestrul1\SQL\SQLProject\SQLProject\obj\Debug\View\SeeStudentsView.baml
+C:\Anul3\Semestrul1\SQL\SQLProject\SQLProject\obj\Debug\View\ModifyStudentView.g.cs
+C:\Anul3\Semestrul1\SQL\SQLProject\SQLProject\obj\Debug\View\ModifyStudentView.baml

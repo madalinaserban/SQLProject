@@ -12,12 +12,8 @@ namespace SQLProject.Model
             {
 
             }
-            public StudentMenu(string nume,string prenume,int grupa)
-            {
-                Nume = nume;
-                Prenume = prenume;
-                GrupaId = grupa;
-            }
+
+            public int Id { get; set; }
             public string Nume { get; set; }
             public string Prenume { get; set; }
             public int GrupaId { get; set; }

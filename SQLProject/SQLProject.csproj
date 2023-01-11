@@ -96,11 +96,12 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Model\StudentMenu.cs" />
-    <Compile Include="Model\sysdiagram.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="ViewModel\AddStudentViewModel.cs" />
+    <Compile Include="ViewModel\ModifyStudentViewModel.cs" />
     <Compile Include="ViewModel\SeeStudentsViewModel.cs" />
+    <Compile Include="View\ModifyStudentView.xaml.cs">
+      <DependentUpon>ModifyStudentView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\SeeStudentsView.xaml.cs">
       <DependentUpon>SeeStudentsView.xaml</DependentUpon>
     </Compile>
@@ -160,6 +161,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\ModifyStudentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\SeeStudentsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

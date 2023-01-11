@@ -16,11 +16,12 @@ namespace SQLProject.Model
                 var productQuery = (from student in schooldb.Students
                                     where student.Active == true
                                     select new StudentMenu 
-                                    {
+                                    {    Id= (int) student.StudentId,
                                         Nume = (string)student.LastName,
                                         Prenume = (string)student.FirstName,
                                         GrupaId= (int) student.GroupeId,
-                                        Email=(string)student.Email
+                                        Email=(string)student.Email,
+                                        CNP=(string) student.Cnp
                                     }).ToList();
 
                 return productQuery;

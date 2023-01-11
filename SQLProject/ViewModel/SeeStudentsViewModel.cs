@@ -73,7 +73,11 @@ namespace SQLProject.ViewModel
             }
         }
         private void ModificaStudentMethod(object param)
-        { 
+        {
+            ModifyStudentView startWindow = new ModifyStudentView();
+            App.Current.MainWindow.Close();
+            App.Current.MainWindow = startWindow;
+            startWindow.Show();
         }
         private ICommand stergeStudentCommand;
         public ICommand StergeStudentCommand
@@ -89,14 +93,7 @@ namespace SQLProject.ViewModel
         }
         private void StergeStudentMethod(object param)
         {
-            int a = -1;
-            var id = schooldb.GETID_STUDENT(selectedStudent.Email);
-            foreach (var cam in id)
-            {
-                a = (int)cam;
-            }
-            LogicStudent camera1 = new LogicStudent();
-            schooldb.DELETESTUDENT(a);
+            schooldb.DELETESTUDENT(selectedStudent.Id);
             MessageBox.Show("Ai sters studentul :" + SelectedStudent.Nume +" "+ SelectedStudent.Prenume);
             SeeStudentsView Window = new SeeStudentsView();
             App.Current.MainWindow.Close();
