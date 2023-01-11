@@ -44,11 +44,14 @@ namespace SQLProject.ViewModel
                 selectedStudent = value;
                 if (selectedStudent != null)
                 {
+                    CanExecuteDeleteCommand = true;
                     choosedStudent = selectedStudent;
                 }
-                OnPropertyChanged("SelectedProduct");
+                OnPropertyChanged("SelectedStudent");
             }
         }
+
+        public bool CanExecuteDeleteCommand { get; set; }
 
         public SeeStudentsViewModel()
         {
@@ -62,27 +65,26 @@ namespace SQLProject.ViewModel
             {
                 if (stergeStudentCommand == null)
                 {
-                    stergeStudentCommand = new RelayCommands(StergeStudentMethod);
+                    stergeStudentCommand = new RelayCommands(StergeStudentMethod, param => CanExecuteDeleteCommand);
                 }
                 return stergeStudentCommand;
             }
         }
         private void StergeStudentMethod(object param)
         {
-            int a = 0;
-            var id = schooldb.GETID_STUDENT(choosedStudent.CNP);
+            int a = -1;
+            var id = schooldb.GETID_STUDENT(selectedStudent.Email);
             foreach (var cam in id)
             {
                 a = (int)cam;
             }
-            LogicStudent student1 = new LogicStudent();
+            LogicStudent camera1 = new LogicStudent();
             schooldb.DELETESTUDENT(a);
-            MessageBox.Show("Ai sters un student!");
+            MessageBox.Show("Ai sters studentul :" + SelectedStudent.Nume +" "+ SelectedStudent.Prenume);
             SeeStudentsView Window = new SeeStudentsView();
             App.Current.MainWindow.Close();
             App.Current.MainWindow = Window;
             Window.Show();
-
 
         }
 

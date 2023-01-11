@@ -187,13 +187,13 @@ namespace SQLProject.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("GETSTUDENTID");
         }
     
-        public virtual ObjectResult<Nullable<int>> GETID_STUDENT(string cNP)
+        public virtual ObjectResult<Nullable<int>> GETID_STUDENT(string mAIL)
         {
-            var cNPParameter = cNP != null ?
-                new ObjectParameter("CNP", cNP) :
-                new ObjectParameter("CNP", typeof(string));
+            var mAILParameter = mAIL != null ?
+                new ObjectParameter("MAIL", mAIL) :
+                new ObjectParameter("MAIL", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("GETID_STUDENT", cNPParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("GETID_STUDENT", mAILParameter);
         }
     
         public virtual int DELETESTUDENT(Nullable<int> iD_STUDENT)
@@ -203,6 +203,35 @@ namespace SQLProject.Model
                 new ObjectParameter("ID_STUDENT", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DELETESTUDENT", iD_STUDENTParameter);
+        }
+    
+        public virtual int InsertStudent(Nullable<int> groupeId, string firstName, string lastName, string cnp, string email, Nullable<bool> active)
+        {
+            var groupeIdParameter = groupeId.HasValue ?
+                new ObjectParameter("GroupeId", groupeId) :
+                new ObjectParameter("GroupeId", typeof(int));
+    
+            var firstNameParameter = firstName != null ?
+                new ObjectParameter("FirstName", firstName) :
+                new ObjectParameter("FirstName", typeof(string));
+    
+            var lastNameParameter = lastName != null ?
+                new ObjectParameter("LastName", lastName) :
+                new ObjectParameter("LastName", typeof(string));
+    
+            var cnpParameter = cnp != null ?
+                new ObjectParameter("Cnp", cnp) :
+                new ObjectParameter("Cnp", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            var activeParameter = active.HasValue ?
+                new ObjectParameter("Active", active) :
+                new ObjectParameter("Active", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertStudent", groupeIdParameter, firstNameParameter, lastNameParameter, cnpParameter, emailParameter, activeParameter);
         }
     }
 }

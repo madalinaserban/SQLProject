@@ -137,5 +137,6 @@
     <FunctionImportMapping FunctionImportName="spStudentUpdate" FunctionName="dbTamModel1.Store.spStudentUpdate" />
     <FunctionImportMapping FunctionImportName="GETID_STUDENT" FunctionName="dbTamModel1.Store.GETID_STUDENT" />
     <FunctionImportMapping FunctionImportName="DELETESTUDENT" FunctionName="dbTamModel1.Store.DELETESTUDENT" />
+    <FunctionImportMapping FunctionImportName="InsertStudent" FunctionName="dbTamModel1.Store.InsertStudent" />
   </EntityContainerMapping>
 </Mapping>

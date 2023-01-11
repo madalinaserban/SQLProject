@@ -17,8 +17,8 @@ namespace SQLProject.Model
                                     where student.Active == true
                                     select new StudentMenu 
                                     {
-                                        Nume = (string)student.FirstName,
-                                        Prenume = (string)student.LastName,
+                                        Nume = (string)student.LastName,
+                                        Prenume = (string)student.FirstName,
                                         GrupaId= (int) student.GroupeId,
                                         Email=(string)student.Email
                                     }).ToList();

@@ -3,9 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SQLProject.View"
+        xmlns:ctx="clr-namespace:SQLProject.ViewModel"
         mc:Ignorable="d"
         Title="Student App" Height="550" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Window.DataContext>
+        <ctx:AddStudentViewModel/>
+    </Window.DataContext>
     <Window.Resources>
         <Style x:Key="RoundedBorder" TargetType="Border">
             <Setter Property="CornerRadius" Value="5"/>
@@ -145,15 +148,15 @@
                VerticalAlignment="Center" Height="46" HorizontalContentAlignment="Center" Width="130" Margin="73.333,4.667,98,0"/>
         <Label Grid.Row="6" Grid.Column="1" Content="Email" FontSize="25" FontFamily="Sitka Display" HorizontalAlignment="Center"
                VerticalAlignment="Bottom" Height="46" HorizontalContentAlignment="Center" Width="130" Margin="73.333,0,98,46.333" Grid.RowSpan="2"/>
-        <TextBox Grid.Row="3" Grid.Column="2" Margin="0,7.333,29.667,0.333" Style="{StaticResource RoundedTextBoxStyle}" Text="{Binding LastNameProperty}"/>
-        <TextBox Grid.Row="4" Grid.Column="2" Margin="0,4.667,29.667,0.333" Style="{StaticResource RoundedTextBoxStyle}" Text="{Binding FirstNameProperty}"/>
-        <TextBox Grid.Row="5" Grid.Column="2" Margin="0,4.667,29.667,0" Style="{StaticResource RoundedTextBoxStyle}" Text="{Binding EmailProperty}"/>
-        <PasswordBox x:Name="passwordBox" Grid.Row="6" Grid.Column="2" Margin="0,5,29.667,46.333" Style="{StaticResource RoundedPasswordBoxStyle}" Grid.RowSpan="2"/>
+        <TextBox Grid.Row="3" Grid.Column="2" Margin="0,7.333,29.667,0.333" Style="{StaticResource RoundedTextBoxStyle}" Text="{Binding NumeProperty}"/>
+        <TextBox Grid.Row="4" Grid.Column="2" Margin="0,4.667,29.667,0.333" Style="{StaticResource RoundedTextBoxStyle}" Text="{Binding PrenumeProperty}"/>
+        <TextBox Grid.Row="5" Grid.Column="2" Margin="0,4.667,29.667,0" Style="{StaticResource RoundedTextBoxStyle}" Text="{Binding IdGrupaProperty}"/>
+        <TextBox Grid.Row="6" Grid.Column="2" Margin="0,5,29.667,46.333" Style="{StaticResource RoundedTextBoxStyle}" Text="{Binding EmailProperty}" Grid.RowSpan="2"/>
         <Label Grid.Row="7" Grid.Column="1" Content="Cnp" FontSize="25" FontFamily="Sitka Display" HorizontalAlignment="Center"
                VerticalAlignment="Center" Height="45" HorizontalContentAlignment="Center" Width="130" Margin="16.333,9.667,41,0.667"/>
-        <Button Grid.ColumnSpan="2" Grid.Row="9" Style="{StaticResource RoundedButtonStyle}" Content="Next"
-                FontFamily="Sitka Display" FontSize="25" Margin="105.333,34,138.333,27.667" Command="{Binding SignUpCommand}" CommandParameter="{Binding ElementName=passwordBox}" Grid.Column="1" Grid.RowSpan="2"/>
-        <TextBox Grid.Row="7" Grid.Column="2" Margin="0,5.333,29.667,51" Style="{StaticResource RoundedTextBoxStyle}" Text="{Binding AddressProperty}" Grid.RowSpan="2"/>
+        <Button Grid.ColumnSpan="2" Grid.Row="9" Style="{StaticResource RoundedButtonStyle}" Content="Adauga"
+                FontFamily="Sitka Display" FontSize="25" Margin="105.333,34,138.333,27.667" Command="{Binding AddStudentCommand}" Grid.Column="1" Grid.RowSpan="2"/>
+        <TextBox Grid.Row="7" Grid.Column="2" Margin="0,5.333,29.667,51" Style="{StaticResource RoundedTextBoxStyle}" Text="{Binding CnpProperty}" Grid.RowSpan="2"/>
         <Button Grid.Column="0" Grid.Row="10" Width="80" HorizontalAlignment="Left" Margin="10,0.667,0,4.667"
                 Style="{StaticResource RoundedButtonStyle}" FontSize="20" Command="{Binding BackCommand}" Grid.ColumnSpan="2">
             <TextBlock Text="Back" FontSize="25" FontFamily="Sitka Display"/>
