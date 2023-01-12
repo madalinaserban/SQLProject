@@ -140,21 +140,20 @@ namespace SQLProject.ViewModel
             App.Current.MainWindow = addView;
             addView.Show();
         }
-        private ICommand searchCommand;
-        private ICommand SearchCommand
+        private ICommand orderbyCommand;
+        private ICommand OrderByCommand
         {
             get
             {
                 if (backCommand == null)
                 {
-                    backCommand = new RelayCommands(SearchMethod);
+                    backCommand = new RelayCommands(OrderByMethod);
                 }
                 return backCommand;
             }
         }
-        private void SearchMethod(object param)
+        private void OrderByMethod(object param)
         {
-           
         }
     }
 }
